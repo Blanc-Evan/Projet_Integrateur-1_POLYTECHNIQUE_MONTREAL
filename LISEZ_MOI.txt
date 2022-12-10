@@ -7,7 +7,7 @@ Auteurs:
 * MOUCHAHID Ali
 * BLANC Evan
 
-Ce projet a été conçu dans le cadre du projet intégrateur en système embarque du de première anneé (INF1900) en génie logiciel et informatique au sein de l'école Polytechnique de Montréal. 
+Ce projet a été conçu dans le cadre du projet intégrateur en système embarqué de première anneé (INF1900) en génie logiciel et informatique au sein de l'école Polytechnique de Montréal. 
 
 Utilisation:
 Pour utiliser ce robot, vous avez besoin d'utiliser les six instructions suivantes:
@@ -39,15 +39,15 @@ Classe manipulant les peripheriques deentreee: Bouton.cpp, Interrupt.cpp, can.cp
  Classe manipulant la memoire externe du robote: memoire_24.cpp et chargementMemoireExterne.cpp
 
 Dossier app
-Ce dossier est l�ex�cutable du robot il inclut tous les fichiers de la librairie grace  l edition des liens et compile le programme dans le robot.
+Ce dossier est l'exécutable du robot il inclut tous les fichiers de la librairie grâce à l'édition des liens et compile le programme dans le robot.
 
 Robot.cpp
-Ce fichier est notre classe principale et elle implemente l objet Robot qui controle l ensemble des etats du robot en suivant les differentes etapes. En partant du parcours A, jusqua se garer a son emplacement respectif dans le Parcours B_S. Nous trouvons dans ce fichier un appel a differentes methodes disponible de la librairie du dossier lib.
+Ce fichier est notre classe principale et elle implémente l'objet Robot qui controle l'ensemble des états du robot en suivant les différentes étapes. En partant du parcours A, jusqu'à se garer à son emplacement respectif dans le Parcours B_S. Nous trouvons dans ce fichier un appel a différentes méthodes disponible de la librairie du dossier lib.
 
-Materiel Manipuler
-Le robot est programme sur une carte microcontroleur Atmega324PA. Les peripheriques utilises sont un capteur de distance Cytron LSS05 afin de capter les poteaux dans le parcours A et un suiveur de ligne GP2D12 afin de suivre une ligne noire pendant l ensemble du parcours.
+Materiel Manipulé
+Le robot est programmé sur une carte microcontroleur Atmega324PA. Les péripheriques utilisés sont un capteur de distance Cytron LSS05 afin de capter les poteaux dans le parcours A et un suiveur de ligne GP2D12 afin de suivre une ligne noire pendant l'ensemble du parcours.
 
-Le RCxD est compose de trois etats: A_VERS_B, B_VERS_S, S_VERS_FIN. 
+Le RCxD est composé de trois etats: A_VERS_B, B_VERS_S, S_VERS_FIN. 
 
 Etat Courant	 Transition	 Etat Suivant		Sortie
 A_VERS_B 	Bouton Poussoir  B_VERS_S 		DEL VERTE
@@ -77,31 +77,18 @@ Le mécanisme permettant de choisir le point de départ utilise le bouton Interr
 Le bouton blanc, qui doit être branché sur le breadboard, permet de changer la sélection. Chaque fois que le bouton est appuyé, la sélection passe au prochain point. L’alternance se fait en boucle. Ainsi, passé le dernier point (S) la sélection revient au premier (A).
 
 
-
-
 La Del Libre indique quel est le point présentement sélectionné. Elle affiche donc la couleur associée au point tel que listé ci-haut.
-
-
 
 
 Le bouton Interrupt sert quant à lui à confirmer la sélection. Lorsqu’il est appuyé, la Del Libre doit clignoter 4 fois par seconde pendant deux secondes puis s’éteindre. Le robot doit ensuite procéder au suivi du parcours à partir du point de départ sélectionné.
 
 
-
-
 Lorsque le robot est mis sous tension ou réinitialisé, la sélection doit initialement être le point A. La Del Libre doit donc être allumée en vert.
-
-
 
 
 Placer un robot pour le départ:
 
 Lorsque le robot est placé sur table, il doit être à cheval sur le segment précédent le marqueur de départ. Le suiveur de ligne doit être directement sur le marqueur de départ.
-
-
-
-
- 
 
 
 
@@ -117,16 +104,12 @@ L’évaluateur peut optionnellement placer un dernier poteau sur un point chois
 
 
 
-
 Partie 1 (à partir de A):
 
 Une fois le robot mis sous tension par l’évaluateur, ce dernier sélectionnera le point de départ A. Un coup en marche, le robot doit détecter et mémoriser l’emplacement des poteaux à l’aide de son capteur de distance. À chaque fois qu’un poteau est détecté, le robot arrête puis émet un son pendant une seconde puis continue à avancer. Si le poteau détecté est près de lui (points F, H, K, N) le son émis doit être aigu. Si le poteau est loin (points G, I, L, O), le son doit être grave.
 
 
-
-
 Lorsque le robot atteint le marqueur B, il s’arrête. L’évaluateur appuiera alors sur le bouton reset pour réinitialiser la carte mère. Il s’assurera ensuite que le robot est bien placé. C’est-à-dire à cheval sur le segment et le nez sur le point de départ. Il sélectionnera ensuite le point de départ B.
-
 
 
 
@@ -136,26 +119,15 @@ Depuis le marqueur B, le robot se met à avancer, effectue un virage à 90 degr�
 
 
 
-
 Partie 3 (à partir de S):
 
 Le robot poursuit son suivi de ligne en direction du couloir formé des segments UW et VX. Lorsqu’il arrive au début de ce couloir, le robot doit changer son mode de suivi du parcours. En effet, plutôt que de suivre une ligne, il devra emprunter le couloir et y évoluer à l’intérieur en « rebondissant » d’un segment à l’autre.
 
 
-
-
 Lorsque le couloir se termine, soit au point W, le robot doit rapidement reprendre un suivi de ligne normal sur VX et se rendre jusqu’au point X.
 
 
-
-
 Un coup arrivé à X, le robot doit aussitôt effectuer une manœuvre pour aller se « stationner » entre les 4 points jaunes. Le robot peut pointer soit vers le haut ou le bas de la table. Pourvu qu’il soit le plus possible centré entre les 4 points jaunes.
-
-
-
-
- 
-
 
 
 Lorsque le robot se trouve dans sa position finale, il émet un son aigu d’une seconde pour indiquer qu’il a terminé.
